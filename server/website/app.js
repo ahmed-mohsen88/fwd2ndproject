@@ -1,5 +1,7 @@
 const baseUrl = "http://api.openweathermap.org/data/2.5/weather?";
 const query = "q=London,uk&";
+// Personal API Key for OpenWeatherMap API
+// const apiKey = '<your_api_key>&units=${savedVar}';
 const apiKey = "APPID=d0908eba7de46c86b9f2703c3c46351e";
 const generate = document.getElementById("generate");
 const zip = document.getElementById("zip");
@@ -7,9 +9,10 @@ const zip = document.getElementById("zip");
 generate.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("do");
-  getData(baseUrl + zip.value + apiKey);
+  postData();
 });
-const getData = async (url) => {
+
+const getData = async (url = "http://localhost:5000/get") => {
   const response = await fetch(url);
   try {
     const data = await response.json();
@@ -44,4 +47,3 @@ const postData = async (
     console.log("error", error);
   }
 };
-// postData();
